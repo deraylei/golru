@@ -35,7 +35,7 @@ func NewLRUNode(k, v interface{}) *LRUNode {
 
 func New(cap int) (*GOLRUSync, error) {
 	if cap <= 0 {
-		return nil, errors.New("capacity must greater than zero")
+		return nil, errors.New("capacity must greater than 0")
 	}
 
 	golru := &GOLRUSync{
@@ -81,7 +81,6 @@ func (golru *GOLRUSync) AddNode(node *LRUNode) error {
 
 	//check exist node
 	if dElement, ok := golru.dataMap[node.Lkey]; ok {
-		fmt.Printf("move node %s: %s \n", node.Lkey, node.Lvalue)
 
 		golru.dataList.MoveToBack(dElement)
 		dElement.Value.(*LRUNode).Lvalue = dElement
@@ -90,7 +89,6 @@ func (golru *GOLRUSync) AddNode(node *LRUNode) error {
 	}
 
 	//add new node
-	fmt.Printf("add new node %s: %s \n", node.Lkey, node.Lvalue)
 	newNode := &LRUNode{
 		Lkey:   node.Lkey,
 		Lvalue: node.Lvalue,
@@ -148,8 +146,6 @@ func (golru *GOLRUSync) GetNode(key interface{}) (node *LRUNode) {
 func (golru *GOLRUSync) removeElement(element *list.Element) {
 
 	node := element.Value.(*LRUNode)
-
-	fmt.Printf("delete node %s: %s \n", node.Lkey, node.Lvalue)
 
 	golru.dataList.Remove(element)
 
