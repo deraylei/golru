@@ -14,11 +14,6 @@ import (
 	"sync"
 )
 
-/**
- * @description:
- * @param {type}
- * @return:
- */
 type GOLRUSync struct {
 	cap      int
 	lock     sync.Mutex
