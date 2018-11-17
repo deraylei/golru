@@ -1,8 +1,9 @@
 # golru
-golang LRU with sync  
-Data list back insert, front pop
 
-#Example
+### golang LRU with sync  
+### Data list back insert, front pop
+
+# Example
 ```
 glru, err := golru.New(128)
 	if err != nil {
