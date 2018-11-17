@@ -10,7 +10,6 @@ package golru
 import (
 	"container/list"
 	"errors"
-	"fmt"
 	"sync"
 )
 
